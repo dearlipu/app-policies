@@ -1,387 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Terms and Conditions for Garage task and reminder application.">
-  <meta name="theme-color" content="#f6f7f9">
-  <title>Terms & Conditions - Garage</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Terms of Use for Garage, an Android to-do list app with reminders.">
+<meta name="theme-color" content="#e9e3d3">
+<title>Terms of Use – Garage</title>
+<style>
+  :root {
+    color-scheme: light;
+    --desk: #ece8de;
+    --paper: #ffffff;
+    --ink: #22201b;
+    --faded: #6b655a;
+    --rule: #cfc7b4;
+    --accent: #0f766e;
+    --shadow: rgba(60, 50, 30, .14);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--desk);
+    color: var(--ink);
+    font: 1.0625rem/1.65 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    text-wrap: pretty;
+    counter-reset: sec;
+  }
+  .desk { padding: 2.5rem 1rem 4rem; }
+  .sheet {
+    max-width: 46rem;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 0 1px 2px var(--shadow), 0 12px 32px -12px var(--shadow);
+    padding: 3.25rem 3rem 3rem;
+    position: relative;
+  }
 
-  <style>
-    :root {
-      --bg: #f6f7f9;
-      --card: #ffffff;
-      --text: #1c1f24;
-      --muted: #666d78;
-      --border: #e3e6ea;
-      --accent: #2563eb;
-    }
+  /* Form header */
+  .kicker {
+    margin: 0;
+    font-size: .8rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--faded);
+  }
+  h1 {
+    margin: .25rem 0 1.5rem;
+    font-size: 2.1rem;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -.01em;
+  }
+  .fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    margin: 0 0 2rem;
+  }
+  .fields div { padding: .55rem 0 .6rem; border-bottom: 1px solid var(--rule); }
+  .fields div:nth-last-child(-n+2) { border-bottom: 0; }
+  .fields div:nth-child(odd) { padding-right: 1rem; }
+  .fields dt {
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faded);
+  }
+  .fields dd { margin: 0; font-size: 1rem; word-break: break-word; }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #111418;
-        --card: #1a1e24;
-        --text: #eceff3;
-        --muted: #9aa3af;
-        --border: #2a2f37;
-        --accent: #60a5fa;
-      }
-    }
+  .stamp {
+    position: absolute;
+    top: 2.6rem;
+    right: 2.4rem;
+    transform: rotate(6deg);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    padding: .2rem .6rem;
+    font: 700 .72rem/1.3 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: .8;
+    border-radius: 3px;
+  }
 
-    * { box-sizing: border-box; }
+  /* Summary box */
+  .short {
+    border: 1px solid var(--ink);
+    padding: 1rem 1.25rem 1.1rem;
+    margin: 0 0 2.25rem;
+  }
+  .short h2 { all: unset; display: block; font-weight: 700; margin-bottom: .35rem; }
+  .short ul { margin: 0; padding-left: 1.2rem; }
+  .short li { margin: .2rem 0; }
+  .short p { margin: .6rem 0 0; font-size: .92rem; color: var(--faded); }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
+  /* Numbered clauses */
+  h2 {
+    counter-increment: sec;
+    counter-reset: cl;
+    margin: 2.4rem 0 .6rem;
+    padding-bottom: .3rem;
+    border-bottom: 1px solid var(--rule);
+    font-size: 1.05rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  h2::before { content: counter(sec) ".  "; color: var(--accent); }
+  .c, .list { margin: .7rem 0; padding-left: 3rem; position: relative; }
+  .c { counter-increment: cl; }
+  .c::before {
+    content: counter(sec) "." counter(cl);
+    position: absolute;
+    left: 0;
+    color: var(--faded);
+    font-size: .88rem;
+    font-variant-numeric: tabular-nums;
+    padding-top: .12rem;
+  }
+  .list { margin-top: -.2rem; }
+  .list ul { margin: 0; padding-left: 1.1rem; }
+  .list li { margin: .25rem 0; }
 
-    .wrap {
-      max-width: 780px;
-      margin: auto;
-      padding: 40px 16px;
-    }
+  a { color: var(--accent); text-underline-offset: .15em; }
+  a:hover { text-decoration-thickness: 2px; }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 32px 26px;
-    }
+  .end {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: .88rem;
+    color: var(--faded);
+  }
 
-    h1 { margin: 0 0 6px; font-size: 1.8rem; }
-    h2 { margin: 30px 0 8px; font-size: 1.2rem; }
-    p, li { font-size: 1rem; }
-    .muted { color: var(--muted); font-size: .9rem; }
-    a { color: var(--accent); }
+  @media (max-width: 600px) {
+    .desk { padding: 0; }
+    .sheet { border-left: 0; border-right: 0; padding: 2rem 1.15rem 2.25rem; box-shadow: none; }
+    h1 { font-size: 1.75rem; }
+    .stamp { position: static; display: inline-block; transform: rotate(-2deg); margin-bottom: 1rem; }
+    .fields { grid-template-columns: 1fr; }
+    .fields div:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    .fields div:last-child { border-bottom: 0; }
+    .c, .list { padding-left: 2.4rem; }
+  }
 
-    @media (max-width: 480px) {
-      .wrap { padding: 16px 10px; }
-      .card { padding: 22px 17px; }
-    }
-  </style>
+  @media print {
+    :root { --desk: #fff; --paper: #fff; --ink: #000; --faded: #444; --rule: #bbb; --accent: #000; }
+    .desk { padding: 0; }
+    .sheet { border: 0; box-shadow: none; padding: 0; max-width: none; }
+    body { font-size: 11pt; }
+    h2 { break-after: avoid; }
+    .c { break-inside: avoid; }
+  }
+</style>
 </head>
-
 <body>
-<div class="wrap">
-<main class="card">
-
-  <h1>Terms & Conditions</h1>
-
-  <p class="muted">
-    App: Garage<br>
-    Last updated: November 7, 2026
-  </p>
-
-  <p>
-    Welcome to Garage. These Terms & Conditions govern
-    your access to and use of the Garage task management
-    and reminder application.
-  </p>
-
-  <p>
-    By installing or using Garage, you agree to these
-    Terms to the extent permitted by applicable law.
-    If you do not agree, please stop using the application.
-  </p>
-
-  <h2>1. About Garage</h2>
-
-  <p>
-    Garage is an Android application designed to help
-    users organize everyday tasks, manage categories,
-    create reminders and use supported widget features.
-  </p>
-
-  <p>
-    Garage is developed and provided by an individual
-    developer, referred to as "we", "us" or "our"
-    in these Terms.
-  </p>
-
-  <h2>2. Eligibility and Acceptable Use</h2>
-
-  <p>
-    You agree to use Garage responsibly and in
-    accordance with applicable laws.
-  </p>
-
-  <p>You must not:</p>
-
-  <ul>
-    <li>Use Garage for unlawful activities.</li>
-    <li>Attempt to interfere with the application's operation or security.</li>
-    <li>Exploit bugs or vulnerabilities to obtain unauthorized benefits.</li>
-    <li>Redistribute, modify or commercially exploit the app without authorization, except where applicable law permits.</li>
-    <li>Infringe the rights of other individuals or organizations.</li>
-  </ul>
-
-  <h2>3. Your Content and Responsibilities</h2>
-
-  <p>
-    You retain responsibility for the tasks, descriptions,
-    categories and other information you create or store
-    in Garage.
-  </p>
-
-  <p>
-    You are responsible for ensuring that your content
-    is accurate, lawful and appropriate.
-  </p>
-
-  <p>
-    Garage does not claim ownership of your personal
-    task content.
-  </p>
-
-  <h2>4. Reminders and Notifications</h2>
-
-  <p>
-    Garage provides reminder functionality through
-    Android alarm and notification features.
-  </p>
-
-  <p>
-    Reminder delivery may be affected by notification
-    permissions, battery optimization, device settings,
-    operating system restrictions, device restarts
-    and other technical conditions.
-  </p>
-
-  <p>
-    We do not guarantee that every reminder will be
-    delivered at an exact time or under every device
-    configuration.
-  </p>
-
-  <p>
-    Garage should not be relied upon as the sole system
-    for emergency, medical, financial, legal or other
-    critical deadlines.
-  </p>
-
-  <h2>5. Backup and Data Loss</h2>
-
-  <p>
-    Garage may provide backup and restore functionality.
-    You are responsible for creating and securely
-    storing backup files.
-  </p>
-
-  <p>
-    Restoring a backup may replace existing application
-    data. We recommend keeping a separate copy of
-    important information before restoring.
-  </p>
-
-  <p>
-    To the extent permitted by applicable law, we are
-    not responsible for data loss caused by accidental
-    deletion, device damage, application removal,
-    failed backup operations, incompatible backup files
-    or circumstances beyond our reasonable control.
-  </p>
-
-  <h2>6. Premium Features and One-Time Purchases</h2>
-
-  <p>
-    Garage may offer optional premium features or
-    additional functionality through one-time
-    in-app purchases.
-  </p>
-
-  <p>
-    Applicable prices, features and purchase conditions
-    will be displayed through Google Play before
-    a purchase is completed.
-  </p>
-
-  <p>
-    Payments are processed through Google Play Billing
-    and are subject to Google's applicable payment
-    terms and policies.
-  </p>
-
-  <p>
-    A one-time purchase grants the applicable purchased
-    entitlement according to the product description
-    presented at the time of purchase. It is not a
-    recurring subscription.
-  </p>
-
-  <p>
-    Purchased features may require successful purchase
-    verification and access to the Google account
-    associated with the transaction.
-  </p>
-
-  <p>
-    We do not collect or store your complete payment
-    card or banking credentials.
-  </p>
-
-  <h2>7. Refunds and Purchase Issues</h2>
-
-  <p>
-    Refund requests and payment-related issues are
-    handled in accordance with applicable consumer
-    protection laws and Google Play's refund policies.
-  </p>
-
-  <p>
-    You may contact Google Play support regarding
-    eligible payment and refund requests.
-  </p>
-
-  <p>
-    If you experience an issue with a purchased
-    Garage feature, you may also contact us using
-    the support email below.
-  </p>
-
-  <h2>8. Intellectual Property</h2>
-
-  <p>
-    Garage, including its software, original interface
-    design, branding, graphics, logos and original
-    content, is owned by or licensed to the developer
-    and is protected by applicable intellectual
-    property laws.
-  </p>
-
-  <p>
-    You may use Garage for its intended purposes.
-    You may not copy, redistribute, sell or commercially
-    exploit protected parts of the application without
-    authorization, except where applicable law permits.
-  </p>
-
-  <h2>9. Updates and Availability</h2>
-
-  <p>
-    We may update, improve, modify or discontinue
-    application features when reasonably necessary.
-  </p>
-
-  <p>
-    Certain features may require compatible Android
-    versions, device capabilities, permissions or
-    updated software.
-  </p>
-
-  <p>
-    We aim to maintain a reliable application but
-    cannot guarantee uninterrupted or error-free
-    availability.
-  </p>
-
-  <h2>10. Disclaimer</h2>
-
-  <p>
-    Garage is a productivity and task management tool.
-    It is not intended to replace professional,
-    medical, financial, legal or emergency services.
-  </p>
-
-  <p>
-    While we make reasonable efforts to maintain
-    the application's functionality, we do not
-    guarantee that it will always operate without
-    interruptions, errors or compatibility issues.
-  </p>
-
-  <h2>11. Limitation of Liability</h2>
-
-  <p>
-    To the maximum extent permitted by applicable law,
-    we will not be liable for indirect, incidental,
-    special or consequential losses arising from
-    the use or inability to use Garage.
-  </p>
-
-  <p>
-    Nothing in these Terms excludes, restricts or
-    limits any consumer right, warranty or liability
-    that cannot legally be excluded, restricted
-    or limited under applicable law.
-  </p>
-
-  <h2>12. Suspension and Termination</h2>
-
-  <p>
-    We may restrict or discontinue certain features
-    where reasonably necessary for security,
-    maintenance, legal compliance or prevention
-    of misuse.
-  </p>
-
-  <p>
-    You may stop using Garage at any time by
-    uninstalling the application.
-  </p>
-
-  <h2>13. Third-Party Services</h2>
-
-  <p>
-    Garage may interact with Android system features
-    and Google Play Billing.
-  </p>
-
-  <p>
-    Third-party services are governed by their own
-    applicable terms, conditions and privacy policies.
-  </p>
-
-  <h2>14. Changes to These Terms</h2>
-
-  <p>
-    We may revise these Terms when Garage's features,
-    services or legal requirements change.
-  </p>
-
-  <p>
-    The latest version will be published at the
-    applicable Terms & Conditions URL.
-  </p>
-
-  <p>
-    Where required by applicable law, we will provide
-    appropriate notice or obtain consent for material
-    changes.
-  </p>
-
-  <h2>15. Governing Law and Consumer Rights</h2>
-
-  <p>
-    These Terms are governed by the laws of India,
-    subject to applicable consumer protection laws
-    and other mandatory legal requirements.
-  </p>
-
-  <p>
-    Nothing in these Terms is intended to remove
-    any mandatory rights or remedies available
-    to consumers under applicable law.
-  </p>
-
-  <h2>16. Contact Us</h2>
-
-  <p>
-    For questions, technical support, purchase issues
-    or concerns about these Terms, contact:
-  </p>
-
-  <p>
-    Application: Garage<br>
-    Developer: Panda & Co<br>
-    Email:
-    <a href="mailto:hello@dearlipu.is-a.dev">
-      hello@dearlipu.is-a.dev
-    </a>
-  </p>
+<div class="desk">
+<main class="sheet">
+
+  <div class="stamp">In effect<br>7 Nov 2026</div>
+
+  <p class="kicker">Garage · Android app</p>
+  <h1>Terms of Use</h1>
+
+  <dl class="fields">
+    <div><dt>App</dt><dd>Garage, a to-do list with reminders</dd></div>
+    <div><dt>Effective</dt><dd>7 November 2026</dd></div>
+    <div><dt>Developer</dt><dd>Saurav Panda, India</dd></div>
+    <div><dt>Contact</dt><dd><a href="mailto:hello@dearlipu.is-a.dev">hello@dearlipu.is-a.dev</a></dd></div>
+  </dl>
+
+  <section class="short">
+    <h2>The short version</h2>
+    <ul>
+      <li>Garage is a to-do app. Your tasks are yours.</li>
+      <li>Reminders usually work, but Android can delay or block them. Don’t rely on Garage alone for anything critical.</li>
+      <li>Back up your data yourself. If you lose it, we may not be able to get it back.</li>
+      <li>Paid features are one-time purchases through Google Play. No subscriptions.</li>
+    </ul>
+    <p>This summary is only a guide. The numbered terms below are the actual agreement.</p>
+  </section>
+
+  <h2>About these terms</h2>
+  <p class="c">These terms cover your use of Garage, an Android app for keeping tasks, sorting them into categories, setting reminders and using the home-screen widget.</p>
+  <p class="c">Garage is made and run by one person, Saurav Panda. In these terms, “we”, “us” and “our” mean him.</p>
+  <p class="c">By installing or using Garage, you agree to these terms. If you don’t agree, please uninstall the app.</p>
+  <p class="c">How Garage handles personal data is explained in the Garage Privacy Policy, which is separate from these terms.</p>
+
+  <h2>Using Garage</h2>
+  <p class="c">You can use Garage for your own personal purposes. Please don’t:</p>
+  <div class="list"><ul>
+    <li>use it for anything illegal;</li>
+    <li>try to break it, bypass its limits, or get at paid features without paying;</li>
+    <li>copy, resell or republish the app or its design, or take it apart to build a competing product, except where the law lets you;</li>
+    <li>use it to harm or infringe the rights of other people.</li>
+  </ul></div>
+
+  <h2>Your tasks and your content</h2>
+  <p class="c">Everything you write in Garage, such as tasks, notes and category names, is yours. We don’t claim any ownership of it.</p>
+  <p class="c">You’re responsible for what you put in the app.</p>
+
+  <h2>Reminders</h2>
+  <p class="c">Garage sets reminders using Android’s alarm and notification system. That means delivery depends on things we don’t control: notification and alarm permissions, battery saver settings, manufacturer-specific restrictions, restarts, Do Not Disturb, and the Android version you’re running.</p>
+  <p class="c">We try to make reminders reliable, but we can’t promise every reminder will arrive, or arrive at the exact minute, on every phone.</p>
+  <p class="c">So please don’t depend on Garage alone for medication, bills, legal deadlines, travel, or anything else where a missed reminder would cause real harm. Use a second method for those.</p>
+
+  <h2>Backup and restore</h2>
+  <p class="c">Garage lets you create a backup file and restore from it. Keeping that file safe is up to you.</p>
+  <p class="c">Restoring a backup can replace the data currently in the app. If what’s on your phone matters, save a copy first.</p>
+  <p class="c">Data can still be lost through accidental deletion, a lost or broken phone, uninstalling the app, a failed backup, or a backup file that doesn’t match the app version. We aren’t responsible for losses like these, and we may not be able to recover your data.</p>
+
+  <h2>Paid features</h2>
+  <p class="c">Some features may be unlocked with a one-time in-app purchase. It is not a subscription and it does not renew.</p>
+  <p class="c">The price and what you get are shown on Google Play before you pay. That description is what you’re buying.</p>
+  <p class="c">All payments are handled by Google Play. We never see or store your card or bank details. Google’s own terms apply to the payment itself.</p>
+  <p class="c">Your purchase is tied to the Google account you bought it with. To restore it on a new phone, sign in with the same account.</p>
+  <p class="c">If we later change or remove a paid feature, we’ll do it fairly. If we take away something you paid for, you can ask for a refund.</p>
+
+  <h2>Refunds</h2>
+  <p class="c">Google Play sets the main refund rules for purchases made there, and some refunds can only be issued by Google. Those rules, including any time windows they apply, are on Google Play’s refund help page.</p>
+  <p class="c">If something you bought in Garage doesn’t work, or you were charged by mistake, email us. We’ll look at it and, where it’s fair or the law requires it, we’ll help you get a refund.</p>
+  <p class="c">Nothing here limits any refund right you have under Indian consumer law.</p>
+
+  <h2>Who owns what</h2>
+  <p class="c">The app’s code, design, name, icon and graphics belong to us, and they are protected by copyright and other laws.</p>
+  <p class="c">You get a personal, non-transferable licence to install and use Garage on your own devices. You don’t get ownership of the app itself.</p>
+
+  <h2>Updates and changes to the app</h2>
+  <p class="c">Garage will change over time. We may add, change or remove features, and some may need a newer version of Android.</p>
+  <p class="c">We’ll try to keep Garage running well, but we can’t promise it will always be available or free of bugs.</p>
+
+  <h2>What we’re responsible for</h2>
+  <p class="c">Garage is a personal organiser. It isn’t a medical, legal, financial or emergency tool, and it’s provided “as is”. We don’t promise it will be uninterrupted or error-free.</p>
+  <p class="c">We’re not liable for indirect or knock-on losses, such as a missed appointment or lost data, that come from using Garage or not being able to use it. Our total liability to you for any claim is limited to the amount you paid for Garage, if anything.</p>
+  <p class="c">None of this limits anything the law doesn’t allow us to limit, including your rights as a consumer in India or liability for our own fraud or wilful misconduct.</p>
+
+  <h2>Ending your use</h2>
+  <p class="c">You can stop using Garage whenever you like by uninstalling it.</p>
+  <p class="c">We may stop or restrict access to the app or to specific features if needed for security, to follow the law, or to deal with abuse.</p>
+
+  <h2>Changes to these terms</h2>
+  <p class="c">We may update these terms when the app or the law changes. The current version is always at this page, and the “Effective” date at the top shows when it last changed.</p>
+  <p class="c">For significant changes, we’ll tell you in the app or on the Play Store listing, and we’ll ask for your agreement where the law requires it. If you keep using Garage after a change, you accept the new terms.</p>
+
+  <h2>Governing law and disputes</h2>
+  <p class="c">These terms are governed by the laws of India.</p>
+  <p class="c">If you have a problem, please email us first. Most issues can be fixed faster that way. If we can’t sort it out, the courts of India can hear the dispute.</p>
+  <p class="c">As a consumer, you keep every right you have under Indian law, including the right to bring a complaint before a Consumer Disputes Redressal Commission. If any part of these terms is found unenforceable, the rest still applies.</p>
+
+  <h2>Contact</h2>
+  <p class="c">For questions, bug reports, purchase problems or anything about these terms, write to <a href="mailto:hello@dearlipu.is-a.dev">hello@dearlipu.is-a.dev</a>.</p>
+
+  <div class="end">
+    <span>Garage · Terms of Use</span>
+    <span>Effective 7 November 2026</span>
+  </div>
 
 </main>
 </div>
