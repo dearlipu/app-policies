@@ -1,86 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App Policies</title>
-  <meta name="description" content="Privacy policies and terms and conditions for our apps.">
-  <style>
-    :root {
-      --bg: #f6f7f9;
-      --card: #ffffff;
-      --text: #1c1f24;
-      --muted: #666d78;
-      --border: #e3e6ea;
-      --accent: #2563eb;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #111418;
-        --card: #1a1e24;
-        --text: #eceff3;
-        --muted: #9aa3af;
-        --border: #2a2f37;
-        --accent: #60a5fa;
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
-    }
-    .wrap {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 48px 16px;
-    }
-    h1 { margin: 0 0 8px; font-size: 1.9rem; }
-    .sub { color: var(--muted); margin: 0 0 32px; }
-    .app {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px 20px;
-      margin-bottom: 14px;
-    }
-    .app h2 { margin: 0 0 4px; font-size: 1.15rem; }
-    .app p { margin: 0 0 12px; color: var(--muted); font-size: 0.95rem; }
-    .links a {
-      display: inline-block;
-      margin-right: 16px;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .links a:hover { text-decoration: underline; }
-    footer {
-      margin-top: 40px;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Privacy policies and terms of use for apps by Saurav Panda.">
+<meta name="theme-color" content="#e6ebe7">
+<title>App Policies · ID Cards</title>
+<style>
+  :root {
+    color-scheme: light;
+    --desk: #e6ebe7;
+    --card: #f4f8f5;
+    --ink: #14201d;
+    --faded: #5d6e69;
+    --rule: #c3d1cb;
+    --accent: #0f766e;
+    --deep: #0b3d39;
+    --shadow: rgba(20, 50, 45, .18);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--desk);
+    color: var(--ink);
+    font: 1rem/1.5 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  .wrap { max-width: 36rem; margin: 0 auto; padding: 2.5rem 1rem 3.5rem; }
+
+  header { text-align: center; margin-bottom: 1.8rem; }
+  .kicker { margin: 0; font-size: .75rem; letter-spacing: .3em; text-transform: uppercase; color: var(--faded); }
+  h1 { margin: .4rem 0 .3rem; font-size: 2.2rem; line-height: 1.1; letter-spacing: .03em; text-transform: uppercase; }
+  .sub { margin: 0; font-style: italic; color: var(--faded); }
+
+  /* ---------- ID card ---------- */
+  .id {
+    position: relative;
+    background:
+      repeating-radial-gradient(circle at 85% 20%, transparent 0 7px, rgba(15,118,110,.07) 7px 8px),
+      repeating-linear-gradient(115deg, transparent 0 11px, rgba(15,118,110,.045) 11px 12px),
+      var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 16px;
+    box-shadow: 0 1px 2px var(--shadow), 0 16px 30px -14px var(--shadow);
+    overflow: hidden;
+    margin-bottom: 1.4rem;
+  }
+  .band {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    background: var(--deep); color: #e8f4f1;
+    padding: .55rem 1.1rem;
+    font: 600 .68rem/1 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    letter-spacing: .22em; text-transform: uppercase;
+  }
+  .band b { color: #7fe3d6; font-weight: 600; }
+
+  .main { display: flex; gap: 1.1rem; padding: 1.2rem 1.1rem 1rem; }
+  .photo {
+    flex: none; width: 6.4rem; height: 6.4rem;
+    display: grid; place-items: center;
+  }
+  .photo svg { width: 100%; height: 100%; overflow: visible; }
+
+  .fields { flex: 1; min-width: 0; display: grid; gap: .6rem; align-content: start; }
+  .f dt { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--faded); }
+  .f dd { margin: 0; }
+  .f.name dd { font-size: 1.6rem; font-weight: 700; line-height: 1.15; word-break: break-word; }
+  .f.meta { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+  .f.meta dd { font-size: .95rem; }
+
+  .pages { display: flex; gap: .6rem; flex-wrap: wrap; padding: 0 1.1rem 1.1rem; }
+  .pages a {
+    flex: 1 1 8rem;
+    display: flex; align-items: center; justify-content: center; gap: .45rem;
+    padding: .6rem .8rem;
+    border: 1.5px solid var(--accent); border-radius: 999px;
+    color: var(--accent); text-decoration: none;
+    font-weight: 600; font-size: .95rem;
+    background: rgba(255,255,255,.6);
+  }
+  .pages a:hover { background: var(--accent); color: #fff; }
+  .pages a::after { content: "→"; }
+
+  .mrz {
+    margin: 0; padding: .65rem 1.1rem .75rem;
+    border-top: 1px dashed var(--rule);
+    background: rgba(255,255,255,.55);
+    font: .78rem/1.35 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    letter-spacing: .1em; color: var(--ink);
+    overflow: hidden; white-space: nowrap; text-overflow: clip;
+  }
+  .empty { text-align: center; color: var(--faded); font-style: italic; }
+
+  footer { text-align: center; margin-top: 1.6rem; font-size: .92rem; color: var(--faded); }
+  footer a { color: var(--accent); text-underline-offset: .15em; }
+
+  @media (max-width: 460px) {
+    .wrap { padding: 1.5rem .75rem 2.5rem; }
+    h1 { font-size: 1.8rem; }
+    .photo { width: 5rem; height: 5rem; }
+    .f.name dd { font-size: 1.35rem; }
+    .mrz { font-size: .62rem; letter-spacing: .06em; }
+  }
+  @media print { :root { --desk: #fff; } .id { box-shadow: none; break-inside: avoid; } }
+</style>
 </head>
 <body>
-  <div class="wrap">
+<div class="wrap">
+  <header>
+    <p class="kicker">Saurav Panda · Android apps</p>
     <h1>App Policies</h1>
-    <p class="sub">Privacy policies and terms and conditions for all our apps.</p>
+    <p class="sub">One identity card per app, with its privacy policy and terms.</p>
+  </header>
 
-    <!-- ===== APP 1 ===== -->
-    <div class="app">
-      <h2>Garage Tasks</h2>
-      <p>Todo list widget</p>
-      <div class="links">
-        <a href="garage/privacy-policy.html">Privacy Policy</a>
-        <a href="garage/terms.html">Terms &amp; Conditions</a>
-      </div>
-    </div>
+  <div id="apps"></div>
+  <noscript><p class="empty">Please enable JavaScript to see the app list, or email me for a link.</p></noscript>
 
-    <footer>
-      Contact: <a href="mailto:you@example.com" style="color: var(--accent);">you@example.com</a>
-    </footer>
-  </div>
+  <footer>Questions? <a href="mailto:hello@dearlipu.is-a.dev">hello@dearlipu.is-a.dev</a></footer>
+</div>
+
+<script>
+/* ============================================================
+   ADD / EDIT APPS HERE. This is the only part you ever touch.
+   One block per app. Only "name" is required.
+     name      App name
+     desc      One-line purpose
+     privacy   Link to privacy policy
+     terms     Link to terms
+     (each app gets its own stamp, picked automatically from its name)
+     platform  (optional) defaults to "Android"
+     updated   (optional) text like "7 Nov 2026"
+   ============================================================ */
+const APPS = [
+  {
+    name: "Garage",
+    desc: "To-do list with reminders and a home-screen widget.",
+    privacy: "garage/privacy-policy.html",
+    terms: "garage/terms.html",
+    updated: "7 Nov 2026"
+  }
+];
+
+/* ---------- nothing below needs editing ---------- */
+/* ---- stamp generator: same app name = same stamp every time ---- */
+const WORDS = ["APPROVED", "VERIFIED", "CLEARED", "CERTIFIED", "ISSUED", "REGISTERED"];
+const INKS = ["#0f766e", "#b42318", "#1d4ed8", "#6d28d9"];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+function rng(seed) {                       /* small seeded random */
+  let h = 2166136261;
+  for (const ch of seed) h = Math.imul(h ^ ch.charCodeAt(0), 16777619);
+  return () => { h = Math.imul(h ^ (h >>> 15), 2246122517); h ^= h >>> 13; return ((h >>> 0) % 10000) / 10000; };
+}
+function makeStamp(app, i) {
+  const r = rng(app.name.toLowerCase());
+  const pick = arr => arr[Math.floor(r() * arr.length)];
+  const ink = pick(INKS), word = pick(WORDS);
+  const shape = pick(["round", "round", "box"]);
+  const tilt = Math.round((r() * 28 - 14) * 10) / 10;
+  const id = "s" + i, plat = esc((app.platform || "Android").toUpperCase());
+  const name = esc(app.name.toUpperCase().slice(0, 14));
+  let body;
+  if (shape === "round") {
+    body = `
+      <circle cx="60" cy="60" r="54" fill="none" stroke="${ink}" stroke-width="4"/>
+      <circle cx="60" cy="60" r="46" fill="none" stroke="${ink}" stroke-width="1.5"/>
+      <circle cx="60" cy="60" r="27" fill="none" stroke="${ink}" stroke-width="1.5"/>
+      <path id="${id}t" d="M 60 60 m -36 0 a 36 36 0 1 1 72 0" fill="none"/>
+      <path id="${id}b" d="M 60 60 m -42 0 a 42 42 0 1 0 84 0" fill="none"/>
+      <text font-size="11.5" font-weight="700" letter-spacing="2.2" fill="${ink}" text-anchor="middle">
+        <textPath href="#${id}t" startOffset="50%">${word}</textPath></text>
+      <text font-size="9.5" font-weight="700" letter-spacing="2.4" fill="${ink}" text-anchor="middle">
+        <textPath href="#${id}b" startOffset="50%">${plat}</textPath></text>
+      <text x="60" y="71" font-size="31" font-weight="700" fill="${ink}" text-anchor="middle">${esc((app.name[0] || "?").toUpperCase())}</text>
+      <text x="14" y="64" font-size="9" fill="${ink}" text-anchor="middle">★</text>
+      <text x="106" y="64" font-size="9" fill="${ink}" text-anchor="middle">★</text>`;
+  } else {
+    body = `
+      <rect x="6" y="22" width="108" height="76" rx="6" fill="none" stroke="${ink}" stroke-width="4"/>
+      <rect x="13" y="29" width="94" height="62" rx="3" fill="none" stroke="${ink}" stroke-width="1.5"/>
+      <text x="60" y="57" font-size="17" font-weight="700" letter-spacing="1.5" fill="${ink}" text-anchor="middle">${word}</text>
+      <line x1="22" y1="64" x2="98" y2="64" stroke="${ink}" stroke-width="1.5"/>
+      <text x="60" y="80" font-size="10.5" font-weight="700" letter-spacing="2" fill="${ink}" text-anchor="middle">${name}</text>`;
+  }
+  /* rough ink look: noise punches tiny holes in the stamp */
+  return `<svg viewBox="0 0 120 120" role="img" aria-label="${esc(app.name)} stamp" font-family="ui-monospace, Menlo, Consolas, monospace">
+    <defs><filter id="${id}f" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="${i + 3}" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -9 5.4" result="holes"/>
+      <feComposite in="SourceGraphic" in2="holes" operator="in"/></filter></defs>
+    <g filter="url(#${id}f)" transform="rotate(${tilt} 60 60)" opacity=".88">${body}</g></svg>`;
+}
+
+const root = document.getElementById("apps");
+const el = (tag, cls, text) => {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined) n.textContent = text;
+  return n;
+};
+const field = (cls, label, value) => {
+  const d = el("div", "f " + cls);
+  d.append(el("dt", "", label), el("dd", "", value));
+  return d;
+};
+const mrzPad = (s, n = 34) => (s + "<".repeat(n)).slice(0, n);
+const mrzClean = s => s.toUpperCase().replace(/[^A-Z0-9]+/g, "<");
+
+if (!APPS.length) root.append(el("p", "empty", "Apps will appear here soon."));
+
+APPS.forEach((app, i) => {
+  const card = el("article", "id");
+
+  const band = el("div", "band");
+  const left = el("span"); left.append("App identity");
+  const right = el("span"); right.append("No. ");
+  right.append(Object.assign(el("b"), { textContent: String(i + 1).padStart(3, "0") }));
+  band.append(left, right);
+
+  const photo = el("div", "photo");
+  photo.innerHTML = makeStamp(app, i);
+
+  const fields = el("dl", "fields");
+  fields.append(field("name", "Name", app.name));
+  if (app.desc) fields.append(field("", "Purpose", app.desc));
+  const metaWrap = el("div", "f meta");
+  [["Platform", app.platform || "Android"], app.updated ? ["Updated", app.updated] : null]
+    .filter(Boolean).forEach(([l, v]) => {
+      const cell = el("div"); cell.append(el("dt", "", l), el("dd", "", v)); metaWrap.append(cell);
+    });
+  fields.append(metaWrap);
+
+  const main = el("div", "main"); main.append(photo, fields);
+
+  const pages = el("div", "pages");
+  [["Privacy policy", app.privacy], ["Terms of use", app.terms]].forEach(([label, href]) => {
+    if (!href) return;
+    const a = el("a", "", label); a.href = href; pages.append(a);
+  });
+
+  const code = (app.privacy ? "PRV" : "---") + (app.terms ? "TRM" : "---");
+  const mrz = el("pre", "mrz");
+  mrz.textContent =
+    mrzPad("P<APP<" + mrzClean(app.name)) + "\n" +
+    mrzPad(code + String(i + 1).padStart(4, "0") + "<ANDROID<");
+
+  card.append(band, main);
+  if (pages.children.length) card.append(pages);
+  card.append(mrz);
+  root.append(card);
+});
+</script>
 </body>
 </html>
