@@ -1,317 +1,256 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Privacy Policy for Garage, a task and reminder app.">
-  <meta name="theme-color" content="#f6f7f9">
-  <title>Privacy Policy - Garage</title>
-  <style>
-    :root {
-      --bg: #f6f7f9;
-      --card: #fff;
-      --text: #1c1f24;
-      --muted: #666d78;
-      --border: #e3e6ea;
-      --accent: #2563eb;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Privacy Policy for Garage, an Android to-do list app with reminders.">
+<meta name="theme-color" content="#e9e3d3">
+<title>Privacy Policy – Garage</title>
+<style>
+  :root {
+    color-scheme: light;
+    --desk: #ece8de;
+    --paper: #ffffff;
+    --ink: #22201b;
+    --faded: #6b655a;
+    --rule: #cfc7b4;
+    --accent: #0f766e;
+    --shadow: rgba(60, 50, 30, .14);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--desk);
+    color: var(--ink);
+    font: 1.0625rem/1.65 "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    text-wrap: pretty;
+    counter-reset: sec;
+  }
+  .desk { padding: 2.5rem 1rem 4rem; }
+  .sheet {
+    max-width: 46rem;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 0 1px 2px var(--shadow), 0 12px 32px -12px var(--shadow);
+    padding: 3.25rem 3rem 3rem;
+    position: relative;
+  }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #111418;
-        --card: #1a1e24;
-        --text: #eceff3;
-        --muted: #9aa3af;
-        --border: #2a2f37;
-        --accent: #60a5fa;
-      }
-    }
+  /* Form header */
+  .kicker {
+    margin: 0;
+    font-size: .8rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--faded);
+  }
+  h1 {
+    margin: .25rem 0 1.5rem;
+    font-size: 2.1rem;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -.01em;
+  }
+  .fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    margin: 0 0 2rem;
+  }
+  .fields div { padding: .55rem 0 .6rem; border-bottom: 1px solid var(--rule); }
+  .fields div:nth-last-child(-n+2) { border-bottom: 0; }
+  .fields div:nth-child(odd) { padding-right: 1rem; }
+  .fields dt {
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--faded);
+  }
+  .fields dd { margin: 0; font-size: 1rem; word-break: break-word; }
 
-    * { box-sizing: border-box; }
+  .stamp {
+    position: absolute;
+    top: 2.6rem;
+    right: 2.4rem;
+    transform: rotate(6deg);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    padding: .2rem .6rem;
+    font: 700 .72rem/1.3 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: .8;
+    border-radius: 3px;
+  }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-    }
+  /* Summary box */
+  .short {
+    border: 1px solid var(--ink);
+    padding: 1rem 1.25rem 1.1rem;
+    margin: 0 0 2.25rem;
+  }
+  .short h2 { all: unset; display: block; font-weight: 700; margin-bottom: .35rem; }
+  .short ul { margin: 0; padding-left: 1.2rem; }
+  .short li { margin: .2rem 0; }
+  .short p { margin: .6rem 0 0; font-size: .92rem; color: var(--faded); }
 
-    .wrap {
-      max-width: 780px;
-      margin: auto;
-      padding: 40px 16px;
-    }
+  /* Numbered clauses */
+  h2 {
+    counter-increment: sec;
+    counter-reset: cl;
+    margin: 2.4rem 0 .6rem;
+    padding-bottom: .3rem;
+    border-bottom: 1px solid var(--rule);
+    font-size: 1.05rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  h2::before { content: counter(sec) ".  "; color: var(--accent); }
+  .c, .list { margin: .7rem 0; padding-left: 3rem; position: relative; }
+  .c { counter-increment: cl; }
+  .c::before {
+    content: counter(sec) "." counter(cl);
+    position: absolute;
+    left: 0;
+    color: var(--faded);
+    font-size: .88rem;
+    font-variant-numeric: tabular-nums;
+    padding-top: .12rem;
+  }
+  .list { margin-top: -.2rem; }
+  .list ul { margin: 0; padding-left: 1.1rem; }
+  .list li { margin: .25rem 0; }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 32px 26px;
-    }
+  a { color: var(--accent); text-underline-offset: .15em; }
+  a:hover { text-decoration-thickness: 2px; }
 
-    h1 { margin: 0 0 6px; font-size: 1.8rem; }
-    h2 { margin: 30px 0 8px; font-size: 1.2rem; }
-    p, li { font-size: 1rem; }
-    .muted { color: var(--muted); font-size: .9rem; }
-    a { color: var(--accent); }
-    code { overflow-wrap: anywhere; }
+  .end {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: .88rem;
+    color: var(--faded);
+  }
 
-    @media (max-width: 480px) {
-      .wrap { padding: 16px 10px; }
-      .card { padding: 22px 17px; }
-    }
-  </style>
+  @media (max-width: 600px) {
+    .desk { padding: 0; }
+    .sheet { border-left: 0; border-right: 0; padding: 2rem 1.15rem 2.25rem; box-shadow: none; }
+    h1 { font-size: 1.75rem; }
+    .stamp { position: static; display: inline-block; transform: rotate(-2deg); margin-bottom: 1rem; }
+    .fields { grid-template-columns: 1fr; }
+    .fields div:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+    .fields div:last-child { border-bottom: 0; }
+    .c, .list { padding-left: 2.4rem; }
+  }
+
+  @media print {
+    :root { --desk: #fff; --paper: #fff; --ink: #000; --faded: #444; --rule: #bbb; --accent: #000; }
+    .desk { padding: 0; }
+    .sheet { border: 0; box-shadow: none; padding: 0; max-width: none; }
+    body { font-size: 11pt; }
+    h2 { break-after: avoid; }
+    .c { break-inside: avoid; }
+  }
+</style>
 </head>
-
 <body>
-<div class="wrap">
-<main class="card">
+<div class="desk">
+<main class="sheet">
 
+  <div class="stamp">In effect<br>7 Nov 2026</div>
+
+  <p class="kicker">Garage · Android app</p>
   <h1>Privacy Policy</h1>
-  <p class="muted">
-    App: Garage<br>
-    Last updated: November 7, 2026
-  </p>
 
-  <p>
-    Garage is a task management and reminder application designed
-    to help you organize everyday activities and manage tasks through
-    your Android device.
-  </p>
+  <dl class="fields">
+    <div><dt>App</dt><dd>Garage, a to-do list with reminders</dd></div>
+    <div><dt>Effective</dt><dd>7 November 2026</dd></div>
+    <div><dt>Developer</dt><dd>Saurav Panda, India</dd></div>
+    <div><dt>Contact</dt><dd><a href="mailto:hello@dearlipu.is-a.dev">hello@dearlipu.is-a.dev</a></dd></div>
+  </dl>
 
-  <p>
-    Your privacy matters. Garage is designed to store your tasks and
-    preferences locally on your device. Garage does not require an
-    account, and does not operate a remote server that receives your
-    task content.
-  </p>
+  <section class="short">
+    <h2>The short version</h2>
+    <ul>
+      <li>Your tasks stay on your phone. We never receive them.</li>
+      <li>No account, no sign-up, no ads, no analytics, no tracking.</li>
+      <li>Backup files are not encrypted, so keep them somewhere safe.</li>
+      <li>Payments go through Google Play. We never see your card details.</li>
+    </ul>
+    <p>This summary is only a guide. The numbered sections below are the actual policy.</p>
+  </section>
 
-  <h2>1. Information We Handle</h2>
+  <h2>What Garage stores</h2>
+  <p class="c">Garage keeps the things you enter into it:</p>
+  <div class="list"><ul>
+    <li>task names, notes and whether they’re done;</li>
+    <li>categories, with their colours and order;</li>
+    <li>reminder dates, times and repeat settings;</li>
+    <li>widget and display settings, and other app preferences.</li>
+  </ul></div>
+  <p class="c">All of this lives in Garage’s private storage on your device. Garage has no server, so none of it is sent to us.</p>
+  <p class="c">Garage doesn’t ask for your name, email, phone number or location, and there is no account to create.</p>
 
-  <p>Garage stores information you voluntarily enter, including:</p>
+  <h2>What we do with it</h2>
+  <p class="c">The data is used only to run the app: showing and editing your tasks, drawing the widget, remembering your settings, and making backups or restoring them when you ask.</p>
+  <p class="c">Reminders are scheduled on your phone using Android’s own alarm and notification system. They don’t go through any push-notification server.</p>
+  <p class="c">Because your data never reaches us, we can’t see it, sell it, or hand it to anyone.</p>
 
-  <ul>
-    <li>Task names, descriptions and completion status.</li>
-    <li>Category names, colors and ordering.</li>
-    <li>Reminder dates, times and repeat settings.</li>
-    <li>Widget configurations and display preferences.</li>
-    <li>Other app settings and preferences.</li>
-  </ul>
+  <h2>Backup and restore</h2>
+  <p class="c">If you tap Backup Data, Garage creates a <code>.grg</code> file with your tasks, categories and reminders. You choose where it’s saved.</p>
+  <p class="c">Garage does not encrypt this file. Anyone who gets a copy can read it, so don’t leave it in a shared folder or send it to people you don’t trust.</p>
+  <p class="c">Restore Data replaces the data currently in the app with what’s in the file you pick. Save a copy of your current data first if you might want it.</p>
+  <p class="c">Separately, Android may include Garage’s data in its own device backup, depending on your phone, its manufacturer and your backup settings. Android and your backup provider (usually Google) manage those copies, not us.</p>
 
-  <p>
-    This information is stored locally within the app's storage
-    on your device.
-  </p>
+  <h2>Sharing</h2>
+  <p class="c">Garage can open Android’s share sheet so you can send task text to another app. This only happens when you start it and pick where it goes.</p>
+  <p class="c">Once you share something, the app you chose handles it under its own privacy policy. Garage doesn’t send your tasks to anyone on its own.</p>
 
-  <p>
-    Garage does not require you to provide your name, email address,
-    phone number or location to use its core features.
-    Garage does not operate an account-registration system.
-  </p>
+  <h2>Third parties</h2>
+  <p class="c">Garage doesn’t include advertising, analytics or crash-reporting tools. If that ever changes, we’ll update this policy before the change ships and say what those tools collect.</p>
+  <p class="c">Android itself processes some information while Garage works, for example when it delivers a notification, lets you pick a file, or runs a device backup.</p>
+  <p class="c">Paid features, if you buy them, are handled by Google Play Billing under Google’s terms and privacy policy. We don’t receive your card or bank details. Google tells us only that a purchase was completed.</p>
 
-  <h2>2. How Your Information Is Used</h2>
+  <h2>Keeping and deleting your data</h2>
+  <p class="c">Your data stays on your phone until you remove it. You can do that by:</p>
+  <div class="list"><ul>
+    <li>deleting individual tasks or categories in Garage;</li>
+    <li>clearing Garage’s storage in Android settings;</li>
+    <li>uninstalling Garage;</li>
+    <li>deleting any backup files you saved.</li>
+  </ul></div>
+  <p class="c">Copies outside the app, such as Android device backups and anything you shared with other apps, are kept or deleted according to those services’ own settings.</p>
 
-  <p>Your information is used to:</p>
+  <h2>Security</h2>
+  <p class="c">Garage keeps its data in Android’s app-private storage, which other apps can’t normally read. No system is perfectly secure, though.</p>
+  <p class="c">Use a screen lock on your phone and keep your backup files somewhere safe.</p>
 
-  <ul>
-    <li>Create, display, edit and organize tasks.</li>
-    <li>Display task information in Android widgets.</li>
-    <li>Schedule and deliver local reminders.</li>
-    <li>Remember your app settings and preferences.</li>
-    <li>Perform backup and restore operations when requested.</li>
-  </ul>
+  <h2>Children</h2>
+  <p class="c">Garage has no accounts and sends nothing to our servers, so we don’t collect personal information from anyone, children included. A parent or guardian should still keep an eye on what a child does with their device and with any other apps or services they use.</p>
 
-  <p>
-    Reminders use Android's local alarm and notification features.
-    Garage does not use a remote push-notification server for
-    its reminders.
-  </p>
+  <h2>Your choices and rights</h2>
+  <p class="c">You decide what goes into Garage, and you can change or delete it at any time. Notifications, reminders, backups and sharing can all be controlled in the app and in Android settings.</p>
+  <p class="c">If you have a question or request about privacy, email us. We’ll answer in good faith, though we can only help with data we actually hold, and for Garage that is very little because your data is on your phone.</p>
 
-  <h2>3. Local Storage, Backup and Restore</h2>
+  <h2>Changes to this policy</h2>
+  <p class="c">We may update this policy if Garage changes or the law does. The current version is always on this page, and the “Effective” date at the top shows when it last changed.</p>
+  <p class="c">If a change affects how your data is handled, we’ll make it clear in the app or on the Play Store listing.</p>
 
-  <p>
-    Garage stores its application data in Android's app-specific
-    storage.
-  </p>
+  <h2>Contact</h2>
+  <p class="c">Questions, concerns or requests about this policy: <a href="mailto:hello@dearlipu.is-a.dev">hello@dearlipu.is-a.dev</a>.</p>
 
-  <p>
-    If you choose the Backup Data feature, Garage creates a
-    <code>.grg</code> backup file containing supported app data,
-    such as tasks, categories and reminders.
-  </p>
-
-  <p>
-    You choose where to save the backup file. The exported backup
-    is not encrypted by Garage. Anyone who obtains access to that
-    file may be able to read its contents.
-  </p>
-
-  <p>
-    When you use Restore Data, Garage reads the backup file you
-    select and replaces the corresponding existing app data.
-    Make sure you have a separate backup before restoring if
-    you want to preserve your current information.
-  </p>
-
-  <p>
-    Android device backup may include Garage app data depending
-    on Android, device manufacturer and your backup settings.
-    Such backups are managed by Android and the applicable
-    backup provider.
-  </p>
-
-  <h2>4. Sharing Information</h2>
-
-  <p>
-    Garage may provide Android's sharing interface so that you
-    can voluntarily share task text or other supported content.
-  </p>
-
-  <p>
-    Sharing happens only when you initiate the action and select
-    another application or recipient. The selected application
-    handles the information under its own privacy policy.
-  </p>
-
-  <p>
-    Garage does not independently send your task information
-    to other people or services.
-  </p>
-
-  <h2>5. Third-Party Services</h2>
-
-  <p>
-    Garage's core task-management features do not require a
-    Garage-operated cloud service or user account.
-  </p>
-
-  <p>
-    Android system components may process information when you
-    schedule reminders, display notifications, select files,
-    share content or use device backup.
-  </p>
-
-  <p>
-    If you purchase an optional premium feature, in-app product
-    or subscription, the transaction is processed through
-    Google Play Billing. Google handles payment processing
-    under its applicable terms and privacy policy.
-  </p>
-
-  <p>
-    Garage does not receive your complete payment card or
-    banking credentials through Google Play Billing.
-  </p>
-
-  <h2>6. Advertising and Analytics</h2>
-
-  <p>
-    Garage's current release does not include advertising or
-    analytics SDKs, provided that no such SDKs are included
-    in the published application.
-  </p>
-
-  <p>
-    If advertising, analytics or crash-reporting services are
-    introduced in a future release, this policy will be updated
-    to explain the information those services process and
-    how they use it.
-  </p>
-
-  <h2>7. Data Retention and Deletion</h2>
-
-  <p>
-    Your tasks, reminders and preferences remain in the app's
-    local storage until you delete them or remove the app data.
-  </p>
-
-  <p>You can remove your information by:</p>
-
-  <ul>
-    <li>Deleting individual tasks or categories in Garage.</li>
-    <li>Clearing Garage's app storage through Android settings.</li>
-    <li>Uninstalling Garage.</li>
-    <li>Deleting exported backup files from their saved location.</li>
-  </ul>
-
-  <p>
-    Android-managed backups and copies shared with other
-    applications are subject to the respective providers'
-    retention and deletion settings.
-  </p>
-
-  <h2>8. Data Security</h2>
-
-  <p>
-    Garage uses Android's app-specific storage to keep its
-    application data separate from ordinary files belonging
-    to other applications, subject to Android's security model.
-  </p>
-
-  <p>
-    No storage or transmission method can be guaranteed to be
-    completely secure. Protect your device with an appropriate
-    screen lock and keep exported backup files in a secure location.
-  </p>
-
-  <h2>9. Children's Privacy</h2>
-
-  <p>
-    Garage does not knowingly collect personal information
-    from children through an account-registration system
-    or a Garage-operated server.
-  </p>
-
-  <p>
-    Parents and guardians should supervise children's use
-    of devices and any optional third-party services.
-  </p>
-
-  <h2>10. Your Choices and Rights</h2>
-
-  <p>
-    You control the tasks and information you enter into Garage.
-    You can manage notifications, reminders, exported backups
-    and sharing through the app and Android settings.
-  </p>
-
-  <p>
-    You may contact us with questions or requests relating to
-    privacy and personal information using the contact details
-    below.
-  </p>
-
-  <h2>11. Changes to This Privacy Policy</h2>
-
-  <p>
-    We may update this Privacy Policy when Garage's features,
-    services or data practices change.
-  </p>
-
-  <p>
-    The latest version will be published at the Privacy Policy
-    URL listed on the app's Google Play page. The updated date
-    will be shown at the top of this page.
-  </p>
-
-  <h2>12. Contact Us</h2>
-
-  <p>
-    If you have questions, concerns or requests regarding
-    this Privacy Policy, contact:
-  </p>
-
-  <p>
-    App: Garage<br>
-    Developer: Panda & Co<br>
-    Email:
-    <a href="mailto:hello@dearlipu.is-a.dev">
-      hello@dearlipu.is-a.dev
-    </a>
-  </p>
+  <div class="end">
+    <span>Garage · Privacy Policy</span>
+    <span>Effective 7 November 2026</span>
+  </div>
 
 </main>
 </div>
